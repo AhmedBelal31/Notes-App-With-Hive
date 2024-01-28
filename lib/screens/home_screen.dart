@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_with_hive/widgets/custom_notes_list_view.dart';
-
 import '../widgets/custom_app_bar.dart';
-import '../widgets/custom_note_item.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,6 +9,11 @@ final List<Color> noteColor =const [Colors.red , Colors.blue , Colors.orange , C
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      floatingActionButton: FloatingActionButton(
+        onPressed:(){},
+        child:const Icon(Icons.add),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: SingleChildScrollView(
