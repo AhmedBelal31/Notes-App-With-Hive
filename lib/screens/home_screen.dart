@@ -11,13 +11,21 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 50),
-            const CustomAppBar(),
-            const SizedBox(height: 20),
-            CustomNoteItem()
-          ],
+        child: SingleChildScrollView(
+          physics:const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
+              const CustomAppBar(),
+              ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) =>const CustomNoteItem(),
+                separatorBuilder: (context, index) =>const SizedBox(height: 10),
+                itemCount: 8,
+              ),
+            ],
+          ),
         ),
       ),
     );
