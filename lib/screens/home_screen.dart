@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_note_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,13 +13,13 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
           children: [
-           const  SizedBox(height: 50),
-            CustomAppBar(),
+            const SizedBox(height: 50),
+            const CustomAppBar(),
+            const SizedBox(height: 20),
+            CustomNoteItem()
           ],
         ),
       ),
     );
   }
 }
-
-
