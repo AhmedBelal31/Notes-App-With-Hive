@@ -18,13 +18,13 @@ class AddNotesBottomSheet extends StatelessWidget {
           child: Column(
             children: [
               CustomTextFormField(
-                title: 'Title',
+                hint: 'Title',
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: CustomTextFormField(
-                  title: 'SubTitle',
-                  maxLine: 3,
+                  hint: 'Content',
+                  maxLine: 5,
                 ),
               ),
               SizedBox(

@@ -36,8 +36,7 @@ class HomeScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              const SizedBox(height: 50),
-              const CustomAppBar(),
+              CustomAppBar(title: 'Notes' , icon: Icons.search,),
               CustomNotesListView(noteColor: noteColor),
             ],
           ),
