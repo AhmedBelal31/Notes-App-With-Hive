@@ -9,7 +9,10 @@ class EditNoteScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-
+          CustomAppBar(
+            title: 'Edit Note',
+            icon: Icons.check,
+          ),
         ],
       ),
     );
