@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_with_hive/screens/edit_note_screen.dart';
+
+import '../screens/edit_note_screen.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key, required this.noteColor});

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_with_hive/widgets/custom_app_bar.dart';
-import 'package:notes_app_with_hive/widgets/custom_text_form_field.dart';
+
+import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_text_form_field.dart';
 
 class EditNoteScreen extends StatelessWidget {
   const EditNoteScreen({super.key});

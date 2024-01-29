@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_with_hive/screens/home_screen.dart';
+import 'presentation/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

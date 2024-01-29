@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_with_hive/widgets/custom_notes_list_view.dart';
 import '../widgets/add_notes_bottom_sheet.dart';
 import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_notes_list_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,7 +36,10 @@ class HomeScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              CustomAppBar(title: 'Notes' , icon: Icons.search,),
+              CustomAppBar(
+                title: 'Notes',
+                icon: Icons.search,
+              ),
               CustomNotesListView(noteColor: noteColor),
             ],
           ),
@@ -45,5 +48,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
