@@ -12,7 +12,6 @@ final IconData icon ;
       padding: const EdgeInsets.only(top: 50),
       child: Row(
         children: [
-          const SizedBox(width: 5),
            Text(
             title,
             style: const TextStyle(
@@ -34,7 +33,6 @@ final IconData icon ;
               icon:  Icon(icon),
             ),
           ),
-          const SizedBox(width: 5),
         ],
       ),
     );
