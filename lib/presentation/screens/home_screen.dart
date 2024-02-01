@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             isScrollControlled: true,
             showDragHandle: true,
             context: context,
-            builder: (context) => AddNotesBottomSheet(),
+            builder: (context) => const AddNotesBottomSheet(),
           );
         },
         child: const Icon(Icons.add),
@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              CustomAppBar(
+              const CustomAppBar(
                 title: 'Notes',
                 icon: Icons.search,
               ),

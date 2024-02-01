@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'custom_text_form_field.dart';
 
 class AddNotesBottomSheet extends StatelessWidget {
@@ -10,32 +9,34 @@ class AddNotesBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0).copyWith(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 2,
-          child: Column(
-            children: [
-              CustomTextFormField(
-                hint: 'Title',
+        child: Column(
+          children: [
+            const CustomTextFormField(
+              hint: 'Title',
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: CustomTextFormField(
+                hint: 'Content',
+                maxLine: 5,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: CustomTextFormField(
-                  hint: 'Content',
-                  maxLine: 5,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () {},
+                child: const Text(
+                  'Add',
                 ),
               ),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  onPressed: () {},
-                  child: const Text('Add' ,),
-                ),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+          ],
         ),
       ),
     );
