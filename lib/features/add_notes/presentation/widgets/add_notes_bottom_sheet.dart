@@ -33,15 +33,18 @@ class AddNotesBottomSheet extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(10.0)
-                .copyWith(bottom: MediaQuery
-                .of(context)
-                .viewInsets
-                .bottom),
-            child: const SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              child: AddNoteForm(),
+          return AbsorbPointer(
+            absorbing:state is AddNoteLoadingState  ? true: false,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0)
+                  .copyWith(bottom: MediaQuery
+                  .of(context)
+                  .viewInsets
+                  .bottom),
+              child: const SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: AddNoteForm(),
+              ),
             ),
           );
         },
