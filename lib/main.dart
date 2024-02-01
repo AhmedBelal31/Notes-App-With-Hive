@@ -9,13 +9,13 @@ import 'features/edit_notes/presentation/edit_note_screen.dart';
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox<NoteModel>(kNotesBox);
+  Hive.registerAdapter<NoteModel>(NoteModelAdapter());
   runApp(const NotesApp());
 }
 
 class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
