@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:notes_app_with_hive/features/add_notes/data/models/note_model.dart';
 import '../../../edit_notes/presentation/edit_note_screen.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  const CustomNoteItem({super.key, required this.noteColor});
+  const CustomNoteItem({super.key, required this.note});
 
-  final Color noteColor;
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +18,16 @@ class CustomNoteItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           decoration: BoxDecoration(
-            color: noteColor,
+            color: Colors.red,
             borderRadius: BorderRadius.circular(16.0),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ListTile(
-                title: const Text(
-                  'Flutter Tips ',
-                  style: TextStyle(
+                title: Text(
+                  note.title,
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 26,
                     fontWeight: FontWeight.w500,
@@ -42,22 +42,22 @@ class CustomNoteItem extends StatelessWidget {
                     size: 30,
                   ),
                 ),
-                subtitle: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 12),
+                subtitle: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'Build Your Career With xDeveloper ',
-                    style: TextStyle(
+                    note.subTitle,
+                    style: const TextStyle(
                       fontSize: 20,
                       // color: Colors.black.withOpacity(.4),
                     ),
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 12),
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
                 child: Text(
-                  'May 21 , 2024',
-                  style: TextStyle(
+                  note.date,
+                  style: const TextStyle(
                       // color: Colors.black.withOpacity(0.4),
                       ),
                 ),

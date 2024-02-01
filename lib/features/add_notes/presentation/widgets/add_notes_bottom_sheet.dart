@@ -20,27 +20,22 @@ class AddNotesBottomSheet extends StatelessWidget {
           }
           if (state is AddNoteSuccessState) {
             Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: const Text('Note Added Successfully'),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                elevation: 0.6,
-                duration: const Duration(seconds: 3),
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: const Text('Note Added Successfully'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
               ),
-            );
+              elevation: 0.6,
+              duration: const Duration(seconds: 3),
+            ));
           }
         },
         builder: (context, state) {
           return AbsorbPointer(
-            absorbing:state is AddNoteLoadingState  ? true: false,
+            absorbing: state is AddNoteLoadingState ? true : false,
             child: Padding(
               padding: const EdgeInsets.all(10.0)
-                  .copyWith(bottom: MediaQuery
-                  .of(context)
-                  .viewInsets
-                  .bottom),
+                  .copyWith(bottom: MediaQuery.of(context).viewInsets.bottom),
               child: const SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: AddNoteForm(),
