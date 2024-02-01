@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app_with_hive/features/add_notes/data/models/note_model.dart';
+import 'package:notes_app_with_hive/features/add_notes/presentation/controller/add_notes_cubit/add_notes_cubit.dart';
+import 'package:notes_app_with_hive/features/add_notes/presentation/controller/add_notes_cubit/add_notes_states.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -41,21 +45,39 @@ class _AddNoteFormState extends State<AddNoteForm> {
               // onSaved:(){},
             ),
           ),
-          SizedBox(
-            width: double.infinity,
-            child: FilledButton(
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                } else {
-                  autoValidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
-              },
-              child: const Text(
-                'Add',
-              ),
-            ),
+          BlocBuilder<NotesCubit, NotesStates>(
+            builder: (context, state) {
+              return SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      NoteModel note = NoteModel(
+                        title: title.toString(),
+                        subTitle: content.toString(),
+                        date: DateTime.now().toString(),
+                        color: Colors.green.value,
+                      );
+                      BlocProvider.of<NotesCubit>(context).addNote(note);
+                    } else {
+                      autoValidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  child: state is AddNoteLoadingState
+                      ? const SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: CircularProgressIndicator(
+                            color: Colors.black,
+                          ))
+                      : const Text(
+                          'Add',
+                        ),
+                ),
+              );
+            },
           ),
           const SizedBox(height: 10),
         ],

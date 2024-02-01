@@ -13,10 +13,22 @@ class AddNotesBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<NotesCubit, NotesStates>(
       listener: (context, state) {
-        if(state is AddNoteLoadingState)
-          {
-            print('Loading State' ) ;
-          }
+        if (state is AddNoteFailureState) {
+          debugPrint('Failed .. ${state.error} ');
+        }
+        if (state is AddNoteSuccessState) {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text('Note Added Successfully'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              elevation: 0.6,
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
       },
       builder: (context, state) {
         return Padding(
