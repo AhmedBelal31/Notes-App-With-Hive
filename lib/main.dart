@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:notes_app_with_hive/data/models/note_model.dart';
-import 'package:notes_app_with_hive/presentation/screens/edit_note_screen.dart';
-import 'constant.dart';
-import 'presentation/screens/home_screen.dart';
-import 'theme.dart';
+import 'core/utils/constant.dart';
+import 'core/utils/theme.dart';
+import 'features/add_notes/data/models/note_model.dart';
+import 'features/add_notes/presentation/screens/home_screen.dart';
+import 'features/edit_notes/presentation/edit_note_screen.dart';
 
-
-void main()  async{
+void main() async {
   await Hive.initFlutter();
   await Hive.openBox<NoteModel>(kNotesBox);
   runApp(const NotesApp());
-
 }
+
 class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
 
@@ -24,9 +23,9 @@ class NotesApp extends StatelessWidget {
       theme: appTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes:{
-        '/' : (context) => const HomeScreen() ,
-        EditNoteScreen.screenRoute : (context) => const EditNoteScreen() ,
+      routes: {
+        '/': (context) => const HomeScreen(),
+        EditNoteScreen.screenRoute: (context) => const EditNoteScreen(),
       },
     );
   }
