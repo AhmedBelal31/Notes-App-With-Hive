@@ -13,11 +13,7 @@ class CustomNoteItem extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => EditNoteScreen(),
-            ),
-          );
+          Navigator.of(context).pushNamed(EditNoteScreen.screenRoute);
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),

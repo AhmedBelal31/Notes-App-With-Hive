@@ -5,7 +5,7 @@ import '../widgets/custom_text_form_field.dart';
 
 class EditNoteScreen extends StatelessWidget {
   const EditNoteScreen({super.key});
-
+static const screenRoute = 'EditNoteScreen' ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
