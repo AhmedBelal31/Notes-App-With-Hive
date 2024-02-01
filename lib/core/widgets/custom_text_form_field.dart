@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key, required this.hint, this.maxLine = 1});
+  const CustomTextFormField({super.key, required this.hint,this.onSaved ,this.maxLine = 1});
 
   final String hint;
   final int maxLine;
+  final Function(String?)? onSaved ;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,17 @@ class CustomTextFormField extends StatelessWidget {
         focusedBorder: buildOutlineInputBorder(),
       ),
       maxLines: maxLine,
+      onSaved:onSaved,
+      validator:(input){
+        if(input?.isEmpty ?? true ) //input !=null
+          {
+            return 'Field is required .' ;
+          }
+        else
+          {
+            return null ;
+          }
+      },
     );
   }
 
