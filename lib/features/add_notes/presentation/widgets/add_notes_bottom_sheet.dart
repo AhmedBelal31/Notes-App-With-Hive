@@ -11,35 +11,41 @@ class AddNotesBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NotesCubit, NotesStates>(
-      listener: (context, state) {
-        if (state is AddNoteFailureState) {
-          debugPrint('Failed .. ${state.error} ');
-        }
-        if (state is AddNoteSuccessState) {
-          Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Text('Note Added Successfully'),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
+    return BlocProvider(
+      create: (context) => NotesCubit(),
+      child: BlocConsumer<NotesCubit, NotesStates>(
+        listener: (context, state) {
+          if (state is AddNoteFailureState) {
+            debugPrint('Failed .. ${state.error} ');
+          }
+          if (state is AddNoteSuccessState) {
+            Navigator.pop(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text('Note Added Successfully'),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0),
+                ),
+                elevation: 0.6,
+                duration: const Duration(seconds: 3),
               ),
-              elevation: 0.6,
-              duration: const Duration(seconds: 3),
+            );
+          }
+        },
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.all(10.0)
+                .copyWith(bottom: MediaQuery
+                .of(context)
+                .viewInsets
+                .bottom),
+            child: const SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: AddNoteForm(),
             ),
           );
-        }
-      },
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(10.0)
-              .copyWith(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: AddNoteForm(),
-          ),
-        );
-      },
+        },
+      ),
     );
   }
 }
