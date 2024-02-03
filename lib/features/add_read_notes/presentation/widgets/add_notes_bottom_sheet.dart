@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/add_notes_cubit/add_notes_cubit.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/add_notes_cubit/add_notes_states.dart';
+import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/read_notes_cubit/read_notes_cubit.dart';
 import 'add_note_form.dart';
 
 class AddNotesBottomSheet extends StatelessWidget {
@@ -19,6 +20,7 @@ class AddNotesBottomSheet extends StatelessWidget {
             debugPrint('Failed .. ${state.error} ');
           }
           if (state is AddNoteSuccessState) {
+            BlocProvider.of<ReadNotesCubit>(context).getAllNotes();
             Navigator.pop(context);
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: const Text('Note Added Successfully'),

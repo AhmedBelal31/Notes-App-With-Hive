@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/data/models/note_model.dart';
+import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/read_notes_cubit/read_notes_cubit.dart';
 import '../../../edit_notes/presentation/edit_note_screen.dart';
 
 class CustomNoteItem extends StatelessWidget {
@@ -38,6 +40,7 @@ class CustomNoteItem extends StatelessWidget {
                   onPressed: ()
                   {
                     note.delete();
+                    BlocProvider.of<ReadNotesCubit>(context).getAllNotes();
                   },
                   icon: const Icon(
                     Icons.delete,
