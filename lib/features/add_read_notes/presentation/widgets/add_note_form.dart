@@ -44,6 +44,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               // onSaved:(){},
             ),
           ),
+          NoteItemColor(),
           BlocBuilder<NotesCubit, NotesStates>(
             builder: (context, state) {
               return SizedBox(
@@ -83,5 +84,19 @@ class _AddNoteFormState extends State<AddNoteForm> {
       autoValidateMode = AutovalidateMode.always;
       setState(() {});
     }
+  }
+}
+class NoteItemColor extends StatelessWidget {
+  const NoteItemColor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: CircleAvatar(
+        backgroundColor: Colors.green,
+        radius: 38,
+      ),
+    );
   }
 }
