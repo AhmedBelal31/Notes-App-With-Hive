@@ -6,6 +6,7 @@ import 'package:notes_app_with_hive/features/add_read_notes/presentation/control
 import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/add_notes_cubit/add_notes_states.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import 'custom_indicator.dart';
+import 'notes_color_listView.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -15,6 +16,7 @@ class AddNoteForm extends StatefulWidget {
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
+
 class _AddNoteFormState extends State<AddNoteForm> {
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
@@ -44,7 +46,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               // onSaved:(){},
             ),
           ),
-          NoteItemColor(),
+          const NotesColorListView(),
           BlocBuilder<NotesCubit, NotesStates>(
             builder: (context, state) {
               return SizedBox(
@@ -86,17 +88,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
     }
   }
 }
-class NoteItemColor extends StatelessWidget {
-  const NoteItemColor({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: CircleAvatar(
-        backgroundColor: Colors.green,
-        radius: 38,
-      ),
-    );
-  }
-}
+
+
