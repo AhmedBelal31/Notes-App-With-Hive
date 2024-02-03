@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 
 class NoteColorItem extends StatelessWidget {
-  const NoteColorItem({super.key});
+  const NoteColorItem(
+      {super.key, required this.isActive, this.color = Colors.green});
+
+  final bool isActive;
+
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: CircleAvatar(
-        backgroundColor: Colors.green,
-        radius: 38,
-      ),
-    );
+    return isActive
+        ? CircleAvatar(
+            radius: 38,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundColor: color,
+              radius: 34,
+            ),
+          )
+        : CircleAvatar(
+            backgroundColor: color,
+            radius: 38,
+          );
   }
 }
