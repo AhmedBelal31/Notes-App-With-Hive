@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_with_hive/features/add_notes/data/models/note_model.dart';
+import 'package:notes_app_with_hive/features/add_read_notes/data/models/note_model.dart';
 import '../../../edit_notes/presentation/edit_note_screen.dart';
 
 class CustomNoteItem extends StatelessWidget {

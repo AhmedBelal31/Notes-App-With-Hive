@@ -4,8 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/services/bloc_observer.dart';
 import 'core/utils/constant.dart';
 import 'core/utils/theme.dart';
-import 'features/add_notes/data/models/note_model.dart';
-import 'features/add_notes/presentation/screens/home_screen.dart';
+import 'features/add_read_notes/data/models/note_model.dart';
+import 'features/add_read_notes/presentation/screens/home_screen.dart';
 import 'features/edit_notes/presentation/edit_note_screen.dart';
 
 void main() async {

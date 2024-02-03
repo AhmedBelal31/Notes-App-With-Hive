@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app_with_hive/features/add_notes/data/models/note_model.dart';
-import 'package:notes_app_with_hive/features/add_notes/presentation/controller/add_notes_cubit/add_notes_cubit.dart';
-import 'package:notes_app_with_hive/features/add_notes/presentation/controller/add_notes_cubit/add_notes_states.dart';
+import 'package:intl/intl.dart';
+import 'package:notes_app_with_hive/features/add_read_notes/data/models/note_model.dart';
+import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/add_notes_cubit/add_notes_cubit.dart';
+import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/add_notes_cubit/add_notes_states.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -51,12 +52,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 width: double.infinity,
                 child: FilledButton(
                   onPressed: () {
+                    var date = DateTime.now();
+                    var formattedDate = DateFormat.yMEd().format(date);
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       NoteModel note = NoteModel(
                         title: title.toString(),
                         subTitle: content.toString(),
-                        date: DateTime.now().toString(),
+                        date: formattedDate,
                         color: Colors.green.value,
                       );
                       BlocProvider.of<NotesCubit>(context).addNote(note);

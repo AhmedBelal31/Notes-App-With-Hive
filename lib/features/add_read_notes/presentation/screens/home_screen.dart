@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app_with_hive/features/add_notes/presentation/controller/read_notes_cubit/read_notes_cubit.dart';
+import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/read_notes_cubit/read_notes_cubit.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../widgets/custom_notes_list_view.dart';
 import '../widgets/add_notes_bottom_sheet.dart';
@@ -34,13 +34,13 @@ class HomeScreen extends StatelessWidget {
           },
           child: const Icon(Icons.add),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        body: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12.0),
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             child: Column(
               children: [
-                const CustomAppBar(
+                CustomAppBar(
                   title: 'Notes',
                   icon: Icons.search,
                 ),
