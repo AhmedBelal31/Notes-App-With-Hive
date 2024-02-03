@@ -15,7 +15,11 @@ class CustomNoteItem extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(EditNoteScreen.screenRoute);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => EditNoteScreen(note: note),
+            ),
+          );
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -37,8 +41,7 @@ class CustomNoteItem extends StatelessWidget {
                 ),
                 trailing: IconButton(
                   padding: EdgeInsets.zero,
-                  onPressed: ()
-                  {
+                  onPressed: () {
                     note.delete();
                     BlocProvider.of<ReadNotesCubit>(context).getAllNotes();
                   },

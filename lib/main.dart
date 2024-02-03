@@ -31,11 +31,7 @@ class NotesApp extends StatelessWidget {
         title: 'Notes App',
         theme: appTheme,
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const HomeScreen(),
-          EditNoteScreen.screenRoute: (context) => const EditNoteScreen(),
-        },
+      home: const HomeScreen(),
       ),
     );
   }
