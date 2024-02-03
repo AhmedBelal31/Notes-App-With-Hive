@@ -28,7 +28,10 @@ class EditNoteScreen extends StatelessWidget {
                 note.save();
                 BlocProvider.of<ReadNotesCubit>(context).getAllNotes();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Done Ya Basha   ✔️')),
+                  const SnackBar(
+                    content: Text('Done ✔️'),
+                    duration: Duration(seconds: 5),
+                  ),
                 );
                 Navigator.pop(context);
               },

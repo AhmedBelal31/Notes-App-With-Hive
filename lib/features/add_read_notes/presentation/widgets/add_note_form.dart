@@ -5,6 +5,7 @@ import 'package:notes_app_with_hive/features/add_read_notes/data/models/note_mod
 import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/add_notes_cubit/add_notes_cubit.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/add_notes_cubit/add_notes_states.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import 'custom_indicator.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -14,12 +15,9 @@ class AddNoteForm extends StatefulWidget {
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
-
 class _AddNoteFormState extends State<AddNoteForm> {
   GlobalKey<FormState> formKey = GlobalKey();
-
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-
   String? title, content;
 
   @override
@@ -52,29 +50,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 width: double.infinity,
                 child: FilledButton(
                   onPressed: () {
-                    var date = DateTime.now();
-                    var formattedDate = DateFormat.yMEd().format(date);
-                    if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                      NoteModel note = NoteModel(
-                        title: title.toString(),
-                        subTitle: content.toString(),
-                        date: formattedDate,
-                        color: Colors.green.value,
-                      );
-                      BlocProvider.of<NotesCubit>(context).addNote(note);
-                    } else {
-                      autoValidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
+                    buildAddButtonAction(context);
                   },
                   child: state is AddNoteLoadingState
-                      ? const SizedBox(
-                          width: 25,
-                          height: 25,
-                          child: CircularProgressIndicator(
-                            color: Colors.black,
-                          ))
+                      ? const CustomIndicator()
                       : const Text(
                           'Add',
                         ),
@@ -86,5 +65,23 @@ class _AddNoteFormState extends State<AddNoteForm> {
         ],
       ),
     );
+  }
+
+  void buildAddButtonAction(BuildContext context) {
+    var date = DateTime.now();
+    var formattedDate = DateFormat.yMEd().format(date);
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      NoteModel note = NoteModel(
+        title: title.toString(),
+        subTitle: content.toString(),
+        date: formattedDate,
+        color: Colors.green.value,
+      );
+      BlocProvider.of<NotesCubit>(context).addNote(note);
+    } else {
+      autoValidateMode = AutovalidateMode.always;
+      setState(() {});
+    }
   }
 }
