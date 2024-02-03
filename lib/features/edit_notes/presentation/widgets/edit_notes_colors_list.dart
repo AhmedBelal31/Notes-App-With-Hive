@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:notes_app_with_hive/features/add_read_notes/data/models/note_model.dart';
 import '../../../../core/utils/constant.dart';
-import '../controller/add_notes_cubit/add_notes_cubit.dart';
-import 'note_color_item.dart';
+import 'edit_notes_color_item.dart';
 
-class NotesColorListView extends StatefulWidget {
-  const NotesColorListView({super.key});
+class EditNotesColorsList extends StatefulWidget {
+  const EditNotesColorsList({super.key, required this.note});
+
+  final NoteModel note;
 
   @override
-  State<NotesColorListView> createState() => _NotesColorListViewState();
+  State<EditNotesColorsList> createState() => _EditNotesColorsListState();
 }
 
-class _NotesColorListViewState extends State<NotesColorListView> {
-  int currentIndex = 2;
+class _EditNotesColorsListState extends State<EditNotesColorsList> {
+  late int currentIndex ;
+
+  @override
+  void initState() {
+   currentIndex = kColors.indexOf(Color(widget.note.color));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +31,10 @@ class _NotesColorListViewState extends State<NotesColorListView> {
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
             currentIndex = index;
-            BlocProvider.of<NotesCubit>(context).color = kColors[currentIndex];
-            BlocProvider.of<NotesCubit>(context).colorIndex = currentIndex;
-
+            widget.note.color = kColors[index].value;
             setState(() {});
           },
-          child: NoteColorItem(
+          child: EditNoteColorItem(
             isActive: currentIndex == index,
             color: kColors[index],
           ),

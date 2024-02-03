@@ -7,7 +7,7 @@ import 'core/utils/constant.dart';
 import 'core/utils/theme.dart';
 import 'features/add_read_notes/data/models/note_model.dart';
 import 'features/add_read_notes/presentation/screens/home_screen.dart';
-import 'features/edit_notes/presentation/edit_note_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class NotesApp extends StatelessWidget {
         title: 'Notes App',
         theme: appTheme,
         debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+        home: const HomeScreen(),
       ),
     );
   }

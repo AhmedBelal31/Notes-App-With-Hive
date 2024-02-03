@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/data/models/note_model.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/read_notes_cubit/read_notes_cubit.dart';
-import '../../../core/widgets/custom_app_bar.dart';
-import '../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../widgets/edit_notes_colors_list.dart';
 
 class EditNoteScreen extends StatelessWidget {
   const EditNoteScreen({super.key, required this.note});
@@ -53,6 +54,8 @@ class EditNoteScreen extends StatelessWidget {
                 maxLine: 5,
               ),
             ),
+            const SizedBox(height: 30),
+            EditNotesColorsList(note: note),
           ],
         ),
       ),

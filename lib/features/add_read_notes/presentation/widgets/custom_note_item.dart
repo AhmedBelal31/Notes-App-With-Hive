@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/data/models/note_model.dart';
 import 'package:notes_app_with_hive/features/add_read_notes/presentation/controller/read_notes_cubit/read_notes_cubit.dart';
-import '../../../edit_notes/presentation/edit_note_screen.dart';
+import '../../../edit_notes/presentation/screens/edit_note_screen.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key, required this.note});
@@ -55,9 +55,9 @@ class CustomNoteItem extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
                     note.subTitle,
-                    style:  TextStyle(
+                    style: TextStyle(
                       fontSize: 20,
-                     color: Colors.white.withOpacity(.9),
+                      color: Colors.white.withOpacity(.9),
                     ),
                   ),
                 ),
@@ -66,9 +66,9 @@ class CustomNoteItem extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 12),
                 child: Text(
                   note.date,
-                  style:  TextStyle(
-                  color: Colors.black.withOpacity(0.9),
-                      ),
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.9),
+                  ),
                 ),
               )
             ],

@@ -46,8 +46,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
               // onSaved:(){},
             ),
           ),
+          const SizedBox(height: 20),
           const NotesColorListView(),
-          const SizedBox(height: 10),
+          const SizedBox(height: 30),
           BlocBuilder<NotesCubit, NotesStates>(
             builder: (context, state) {
               return SizedBox(
@@ -80,7 +81,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
         title: title.toString(),
         subTitle: content.toString(),
         date: formattedDate,
-        color: Colors.green.value,
+        color: Colors.blue.value,
       );
       BlocProvider.of<NotesCubit>(context).addNote(note);
     } else {
@@ -89,6 +90,3 @@ class _AddNoteFormState extends State<AddNoteForm> {
     }
   }
 }
-
-
-
