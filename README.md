@@ -14,8 +14,8 @@ A new Flutter project.
 <hr>
 
 # 🖥 Deal With :
-* Deal With Hive
-*  Deal With Bloc
+* Deal With Hive As local database
+*  Deal With Bloc As State Management
 
 
 # Snapshots 📸
